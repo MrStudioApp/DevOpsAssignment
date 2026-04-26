@@ -1,0 +1,11 @@
+1. Which architecture (VM or container) is better for microservices? Why?
+Containers are far superior for microservices. As demonstrated in Part A, containers share the host's OS kernel, meaning they boot in milliseconds and consume drastically less memory and CPU compared to the heavy overhead of a full VM hypervisor. This lightweight nature allows for massive density and rapid scaling.
+
+2. Why does AWS split Nitro into hardware components?
+AWS offloads virtualization functions (networking, storage, security) onto dedicated hardware cards. This frees up the main server's CPU and memory for the user's instance and drastically improves security by physically isolating the hypervisor.
+
+3. In which scenarios would you use VMs over containers?
+VMs are preferable when strict, hardware-level security isolation is required, or when running applications that need completely different operating systems on the same host (e.g., Windows Server on a Linux host).
+
+4. How does tail latency change with the number of parallel calls?
+As parallel calls increase, tail latency worsens. Concurrency causes resource contention and queueing bottlenecks. Even if average response times are stable, the extreme outliers (95th/99th percentile) experience significantly higher delays due to this traffic jam.
