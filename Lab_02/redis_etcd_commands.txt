@@ -1,0 +1,20 @@
+TASK 1: REDIS
+> docker-compose exec redis-node1 redis-cli set mykey "Replication_Success"
+OK
+> docker-compose exec redis-node2 redis-cli get mykey
+"Replication_Success"
+> docker-compose stop redis-node2
+> docker-compose exec redis-node1 redis-cli set mykey "Partition_Overcome"
+OK
+> docker-compose start redis-node2
+> docker-compose exec redis-node2 redis-cli get mykey
+"Partition_Overcome"
+
+TASK 2: ETCD
+> docker-compose exec etcd etcdctl put foo bar
+OK
+> docker-compose exec etcd etcdctl get foo
+foo
+bar
+> docker-compose exec etcd etcdctl endpoint status -w table
+(Displays table showing the single node as the IS LEADER)
