@@ -1,0 +1,19 @@
+Lab 4 – Reflection Answers
+
+1. Which parts of this lab show the benefits of microservices over a monolith?
+   This lab demonstrates microservices by separating functionality into product-service and order-service. Each service can be developed, deployed, and scaled independently. This improves flexibility, maintainability, and allows teams to work on different services without affecting the entire system.
+
+2. Which new complexities were introduced by splitting the system into two services?
+   Splitting into microservices introduces complexity such as service-to-service communication, network dependency, error handling between services, and the need for orchestration tools like Docker Compose. Debugging also becomes harder because issues may occur across multiple services.
+
+3. What would break if network latency increased or one service became slow?
+   If product-service becomes slow or unreachable, order-service cannot fetch product data, causing delays or failures in order creation. This shows how tightly coupled synchronous communication can impact system reliability and performance.
+
+4. Which 12-factor app principles are visible in this implementation?
+   The lab demonstrates several 12-factor principles including:
+
+* Configuration via environment variables (PRODUCT_SERVICE_URL)
+* Stateless services (no persistent local storage)
+* Port binding (services exposed via ports)
+* Disposability (services can start/stop quickly)
+* Logs treated as event streams (via container logs)
