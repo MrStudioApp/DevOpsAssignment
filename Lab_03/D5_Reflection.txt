@@ -1,0 +1,22 @@
+Lab 3 – Reflection Answers
+
+1. Why do namespaces alone not guarantee fair resource use?
+   Namespaces only isolate what a process can see (such as processes, network, and file systems), but they do not limit how much CPU, memory, or other resources a container can use. Without resource limits, one container can consume excessive resources and affect others. Therefore, namespaces provide isolation but not control over resource usage.
+
+2. How do cgroups improve cluster stability?
+   Cgroups (control groups) enforce limits on resources such as CPU, memory, and I/O. By restricting how much each container can use, cgroups prevent a single container from overwhelming the system. This ensures fair distribution of resources and keeps the cluster stable and responsive under load.
+
+3. Why is Docker image layering important for large-scale orchestration?
+   Docker image layering allows reuse of unchanged layers across builds and deployments. This reduces build time, speeds up image distribution, and saves storage. In large-scale systems, this efficiency is critical because many containers may share the same base layers, improving performance and scalability.
+
+4. What does Kubernetes mean by desired state?
+   Desired state refers to the configuration defined by the user (e.g., number of replicas, container image, and settings). Kubernetes continuously monitors the actual state of the system and automatically makes changes to match the desired state, ensuring the system remains consistent.
+
+5. How is self-healing different from traditional manual operations?
+   In traditional systems, failures require manual intervention to restart services or fix issues. In Kubernetes, self-healing is automatic. If a container or pod fails, Kubernetes detects the issue and replaces it or restarts it without user involvement, maintaining system availability.
+
+6. Why are readiness probes and liveness probes not interchangeable?
+   Readiness probes determine if a container is ready to receive traffic. If it fails, the container is temporarily removed from service but not restarted. Liveness probes check if the container is still running correctly. If a liveness probe fails, Kubernetes restarts the container. They serve different purposes and cannot replace each other.
+
+7. What is one limitation of observing scheduling in a single-node kind cluster compared with a real multi-node cluster?
+   In a single-node cluster, all pods are scheduled on the same node, so you cannot observe real scheduling decisions like load balancing across nodes or node-specific placement. In a multi-node cluster, Kubernetes distributes workloads based on resource availability and policies, which provides a more realistic view of scheduling behavior.

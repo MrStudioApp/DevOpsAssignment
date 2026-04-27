@@ -1,7 +1,0 @@
-Question: Why does the container think its main process is PID 1 while the host sees a different PID? 
-Answer: This is due to the PID namespace. It provides an isolated process tree for the container so it can have its own independent numbering (starting at 1) while the host system tracks the actual system process ID to manage it alongside other host processes.
-
-Which image is smaller? lab3-multi (by 9MB).
-Why? The multi-stage build uses the builder stage to install dependencies and then only copies the final binaries/libraries into the production image, discarding unnecessary build logs and caches.
-Why does layer order matter? Docker caches layers. If you change a file at the top of the Dockerfile, all layers below it must be rebuilt. Putting frequently changing files (like app.py) at the end ensures faster builds.
-

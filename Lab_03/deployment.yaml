@@ -12,6 +12,8 @@ spec:
       labels:
         app: lab3-web
     spec:
+      nodeSelector:
+        node-role: general
       containers:
       - name: web
         image: lab3-multi
