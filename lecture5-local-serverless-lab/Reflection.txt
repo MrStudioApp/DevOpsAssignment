@@ -1,0 +1,25 @@
+Lab 5 – Reflection Answers
+
+1. What is the event source in this lab?
+   The event source is the watcher.py service, which monitors the input folder and detects new image files.
+
+2. What is the event router?
+   The event router is event_router.py, which reads events from Redis Streams and forwards them to the appropriate functions.
+
+3. What are the event destinations?
+   The event destinations are the image-resizer function and the notifier function.
+
+4. Why is this pipeline loosely coupled?
+   The services communicate through Redis Streams instead of directly calling each other. This means each component can operate independently without tight dependencies.
+
+5. What happened after restarting the image-resizer container?
+   The first request after restarting was slower because the container needed time to initialize, demonstrating cold start behavior.
+
+6. How is this similar to serverless cold start?
+   In serverless systems, functions may take longer to respond when they are invoked for the first time after being inactive, similar to what happens after restarting the container.
+
+7. What is missing compared with real cloud serverless platforms?
+   This implementation lacks automatic scaling, load balancing, and managed infrastructure features found in cloud platforms.
+
+8. How could this pipeline be extended?
+   It could be extended by adding services for image moderation, OCR, or machine learning processing, and by integrating more event-driven functions.
